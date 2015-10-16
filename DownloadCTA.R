@@ -1,5 +1,5 @@
-webdata <- read.csv("~/TransitData/GTFS/Trend/webdata.csv", stringsAsFactors=FALSE)
-PCPath <- "C:/Users/Martin/Documents/TransitData/GTFS/Trend"
+webdata <- read.csv("~/TransitData/GTFS/GTFS_trends/webdata.csv", stringsAsFactors=FALSE)
+PCPath <- "C:/Users/Martin/Documents/TransitData/GTFS/GTFS_trends"
 
 #Download One File
 x <-1
@@ -18,7 +18,5 @@ for (i in 1:nrow(webdata)) {
                             download.file(webdata[i,1], target)
                             unzip(target, exdir = file.path(PCPath, paste(webdata[i,3], "_", webdata[i,4], "_", substr(webdata[i,5], 1, 4), sep="")))
                             }
-
-
 
 
