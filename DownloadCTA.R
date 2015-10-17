@@ -1,5 +1,6 @@
-webdata <- read.csv("~/TransitData/GTFS/GTFS_trends/webdata.csv", stringsAsFactors=FALSE)
-PCPath <- "C:/Users/Martin/Documents/TransitData/GTFS/GTFS_trends"
+webdata <- read.csv("webdata.csv", stringsAsFactors=FALSE)
+PCPath <- getwd()
+
 
 #Download One File
 x <-1
