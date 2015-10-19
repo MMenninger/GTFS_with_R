@@ -1,3 +1,5 @@
+install.packages("plyr")
+library(plyr)
 webdata <- read.csv("webdata.csv", stringsAsFactors=FALSE)
 PCPath <- getwd()
 list.files(PCPath)
@@ -22,17 +24,21 @@ for (i in 1:nrow(webdata)) {
                             unzip(target, exdir = file.path(PCPath, paste("Unzips/", folder, sep="")))
                             }
 
-#Load FIles in R
-#for (i in 1:nrow(webdata)) {
-for (i in 1:1) {
+#Load Files in R
+for (i in 1:nrow(webdata)) {
+#for (i in 1:1) {
                 folder <- paste(webdata[i,3], "_", webdata[i,4], "_", substr(webdata[i,5], 1, 4), sep="")
                 folder #tells you what file working on
                 Active <- file.path(getwd(), "Unzips", folder)
-  
-                }
 
-list.files("Unzips")
+                ifelse(exists("agency"), 
+                       (agency<-rbind.fill(read.csv(paste(Active, "/agency.txt", sep="")), agency)),
+                       (agency<-read.csv(paste(Active, "/agency.txt", sep=""))))
 
-list.files(Active)
-agency<-read.csv(paste(Active, "/agency.txt", sep=""))
-agency<-rbind(read.csv(paste(Active, "/agency.txt", sep="")), agency)
+                ifelse(exists("calendar"), 
+                       (calendar<-rbind.fill(read.csv(paste(Active, "/calendar.txt", sep="")), calendar)),
+                       (calendar<-read.csv(paste(Active, "/calendar.txt", sep=""))))
+                
+                
+                
+}
