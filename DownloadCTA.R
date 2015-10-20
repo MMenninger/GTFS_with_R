@@ -23,6 +23,8 @@ for (i in 1:nrow(webdata)) {
                             download.file(webdata[i,1], target)
                             unzip(target, exdir = file.path(PCPath, paste("Unzips/", folder, sep="")))
                             }
+#Clean up
+rm(list = c("agency", "calendar", "junk", "score"))
 
 #Load Files in R
 for (i in 1:nrow(webdata)) {
@@ -30,7 +32,7 @@ for (i in 1:nrow(webdata)) {
                 folder <- paste(webdata[i,3], "_", webdata[i,4], "_", substr(webdata[i,5], 1, 4), sep="")
                 folder #tells you what file working on
                 Active <- file.path(getwd(), "Unzips", folder)
-
+                
                 ifelse(exists("agency"), 
                        (agency<-rbind.fill(read.csv(paste(Active, "/agency.txt", sep="")), agency)),
                        (agency<-read.csv(paste(Active, "/agency.txt", sep=""))))
@@ -38,7 +40,4 @@ for (i in 1:nrow(webdata)) {
                 ifelse(exists("calendar"), 
                        (calendar<-rbind.fill(read.csv(paste(Active, "/calendar.txt", sep="")), calendar)),
                        (calendar<-read.csv(paste(Active, "/calendar.txt", sep=""))))
-                
-                
-                
-}
+                }
