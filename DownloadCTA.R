@@ -50,9 +50,9 @@ for (i in 9:10) {
                 file_path_sans_ext(list.files(Active) [i]) # For testing
              
                 if (file.exists(paste(Active, "/agency.txt", sep="")))    
-                  { agency<-rbind.fill(read.csv(paste(Active, "/agency.txt", sep="")), shapes)}
+                  { agency<-rbind.fill(read.csv(paste(Active, "/agency.txt", sep="")), agency)}
                 if (file.exists(paste(Active, "/calendar.txt", sep="")))    
-                  { calendar<-rbind.fill(read.csv(paste(Active, "/calendar.txt", sep="")), shapes)}
+                  { calendar<-rbind.fill(read.csv(paste(Active, "/calendar.txt", sep="")), calendar)}
                 if (file.exists(paste(Active, "/calendar_dates.txt", sep="")))    
                   {  calendar_dates<-rbind.fill(read.csv(paste(Active, "/calendar_dates.txt", sep="")), calendar_dates)}
                 if (file.exists(paste(Active, "/frequencies.txt", sep="")))    
