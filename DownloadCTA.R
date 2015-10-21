@@ -71,5 +71,11 @@ for (i in 9:10) {
                   {trips<-rbind.fill(read.csv(paste(Active, "/trips.txt", sep="")), trips)}
                 }
 
+calendar<-unique(calendar)
+calendar_dates<-unique(calendar_dates)
+routes<-unique(routes)
 shapes<-unique(shapes)
 stop_times<-unique(stop_times)
+stops<-unique(stops)
+transfers<-unique(transfers)
+trips<-unique(trips)
