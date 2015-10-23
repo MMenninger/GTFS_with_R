@@ -1,4 +1,4 @@
-install.packages("plyr")
+#install.packages("plyr")
 library("plyr")
 library("tools")
 webdata <- read.csv("webdata.csv", stringsAsFactors=FALSE)
@@ -39,13 +39,13 @@ transfers<-data.frame()
 trips<-data.frame()
 
 #Load Files in R
-#for (i in 1:nrow(webdata)) {
-for (i in 9:10) {
+for (i in 1:nrow(webdata)) {
+#for (i in 9:10) {
                 folder <- paste(webdata[i,3], "_", webdata[i,4], "_", substr(webdata[i,5], 1, 4), sep="")
                 folder #tells you what file working on
                 Active <- file.path(getwd(), "Unzips", folder)
                 print(Active) # to tell you where fails if it does and status
-                
+                print(Sys.time())
                 list.files(Active) [i] #For testing
                 file_path_sans_ext(list.files(Active) [i]) # For testing
              
@@ -73,9 +73,12 @@ for (i in 9:10) {
 
 calendar<-unique(calendar)
 calendar_dates<-unique(calendar_dates)
+print(Sys.time())
 routes<-unique(routes)
 shapes<-unique(shapes)
+print(Sys.time())
 stop_times<-unique(stop_times)
 stops<-unique(stops)
 transfers<-unique(transfers)
 trips<-unique(trips)
+print(Sys.time())
